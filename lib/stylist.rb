@@ -48,7 +48,7 @@ class Stylist
 
   define_method(:delete) do
     DB.exec("DELETE FROM stylist_clients WHERE stylist_id = #{self.id()};")
-    DB.exec("DELETE FROM sylists WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
   end
 
   define_method(:clients) do
