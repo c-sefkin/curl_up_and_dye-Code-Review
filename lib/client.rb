@@ -40,4 +40,15 @@ class Client
     end
     found_client
   end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
+
+    attributes.fetch(:stylist_ids, []).each() do |stylist_id|
+      DB.exec("INSERT INTO stylist_clients (stylist_id, client_id) VALUES (#{stylist_id}, #{self.id()};")
+    end
+  end
+
 end

@@ -12,6 +12,17 @@
   <p>There are no stylists added yet!</p>
   <% end %>
 
+  <h3>Update the name of <%=@client.name() %> </h3>
+
+  <form action="/clients/<%= @client.id() %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+
+    <label for "name">Rename the client:</label>
+    <input id="name" name="name" type="text">
+    <button type="submit">Update</button>
+  </form>
+
+
   <h3>Remove this client from the salon</h3>
   <form action='/clients/<%= @client.id() %>' method="post">
     <input type="hidden" name="_method" value="delete">

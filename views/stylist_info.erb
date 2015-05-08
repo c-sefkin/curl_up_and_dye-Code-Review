@@ -21,6 +21,17 @@
     <% end %>
    </ul>
 
+   <h3>Update the name of <%=@stylist.name() %> </h3>
+
+   <form action="/stylists/<%= @stylist.id() %>" method="post">
+     <input name="_method" type="hidden" value="patch">
+
+     <label for "name">Rename the stylist:</label>
+     <input id="name" name="name" type="text">
+     <button type="submit">Update</button>
+   </form>
+
+
    <h3>Remove this stylist from Curl Up and Dye</h3>
    <form action="/stylists/<%= @stylist.id() %>" method="post">
      <input type="hidden" name="_method" value="delete">
