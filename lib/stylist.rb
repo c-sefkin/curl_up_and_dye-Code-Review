@@ -1,12 +1,9 @@
-require('rspec')
-require('pg')
-require('stylist')
-require('spec_helper')
+class Stylist
+  attr_reader(:name, :id)
 
-describe(Stylist) do
-  
-  describe(".all") do
-    it("starts off with no stylists") do
-      expect(Stylist.all()).to(eq([]))
-    end
+  define_method(:initialize) do |attributes|
+    @name = attributes.fetch(:name)
+    @id = attributes.fetch(:id)
   end
+
+  
