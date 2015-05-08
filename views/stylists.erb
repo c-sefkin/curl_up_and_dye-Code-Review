@@ -1,0 +1,26 @@
+<h1>Stylist Portal</h1>
+
+<p>Add a stylist to Curl Up and Dye:</p>
+
+<form action="/stylists" method="post">
+  <label for="name">Stylist's name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add stylist</button>
+</form>
+
+<% if @stylists.any?() %>
+  <p>Click on a stylist to assign them clients</p>
+
+  <ul>
+    <% @stylists.each do |stylist| %>
+    <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no stylists added yet!</p>
+  <% end %>
+
+  <p><a href="/clients">See all clients</a></li>
+
+  <p><a href="/">Return home</a></p>

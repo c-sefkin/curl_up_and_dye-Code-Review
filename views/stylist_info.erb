@@ -1,0 +1,30 @@
+<h1>Stylist Info Page</h1>
+<h2>Name: <%= @stylist.name() %></h2>
+<h3>Clients:</h3>
+
+<% if @clients.any?() %>
+  <form action="/stylists/<%= @stylist.id() %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <% @clients.each() do |client| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="client_ids[]" value="<%= client.id() %>"><%= client.name() %>
+        </label>
+      </div>
+      <% end %>
+      <button type="submit">Add clients</button>
+    </form>
+    <% end %>
+    <ul>
+        <% @stylist.clients().each() do |client| %>
+        <li><%= client.name()%></li>
+    <% end %>
+   </ul>
+
+   <h3>Remove this stylist from Curl Up and Dye</h3>
+   <form action="/stylists/<%= @stylist.id() %>" method="post">
+     <input type="hidden" name="_method" value="delete">
+     <button type="submit">Remove Stylist</button>
+  </form
+
+  <p><a href="/">Return Home</a></p>

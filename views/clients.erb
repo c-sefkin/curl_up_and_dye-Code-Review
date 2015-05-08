@@ -1,0 +1,26 @@
+<h1>Client Portal</h1>
+
+<p>Add a client:</p>
+
+<form action="/clients" method="post">
+  <label for="name">Client name:</label>
+  <input id="name" name="name" type="name">
+
+  <button type="submit">Add client</button>
+</form>
+
+<% if @clients.any?() %>
+  <p>Click on a client to assign them to a stylist:</p>
+
+  <ul>
+    <% @clients.each do |client| %>
+    <li><a href="/clients/<%= client.id() %>"><%= client.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There are no clients added yet!</p>
+  <% end %>
+
+  <p><a href="/stylists">See all stylists</a></p>
+
+  <p><a href="/">Return to home page</a></p>
