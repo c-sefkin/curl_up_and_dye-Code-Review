@@ -72,12 +72,15 @@ get('/stylists/:id') do
 end
 
 patch('/stylists/:id') do
-  name = params.fetch("name", [])
   stylist_id = params.fetch("id").to_i()
   @stylist = Stylist.find(stylist_id)
   client_ids = params.fetch("client_ids", [])
-  @stylist.update({:client_ids => client_ids, :name => name})
+  @stylist.update({:client_ids => client_ids})
   @clients = Client.all()
+  if params.has_key?("name")
+    name = params.fetch("name")
+    @stylist.update({:name => name})
+  end
   erb(:stylist_info)
 end
 
