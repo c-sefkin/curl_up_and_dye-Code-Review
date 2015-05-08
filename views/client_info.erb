@@ -2,17 +2,14 @@
 <h2>Name: <%= @client.name()%></h2>
 <h3>Stylist:</h3>
 <% if @stylists.any?() %>
-  <form action='/clients/<%= @client.id() %>' method="post">
-    <input type="hidden" name="_method" value="patch">
-    <% @stylists.each() do |stylist| %>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="stylist_ids[]" value="<%= stylist.id()%>"><%= stylist.name() %>
-      </label>
-    </div>
-    <% end %>
-    <button type="submit">Add stylists</button>
-  </form>
+
+<ul>
+  <% @stylists.each do |stylist| %>
+  <li><a href='/stylists/<%= stylist.id()%>'><%= stylist.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+  <p>There are no stylists added yet!</p>
   <% end %>
 
   <h3>Remove this client from the salon</h3>
