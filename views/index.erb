@@ -1,10 +1,10 @@
 <h1>Welcome to Curl Up and Dye!</h1>
-<h2>Edit client and stylist information here:</h2>
+<h3>Edit client and stylist information here</h3>
 
 <p><a href="/clients">Add a new client</a></p>
 <p><a href="/stylists">Add a new stylist</a></p>
 
-<h3>Here are all the stylists currently working here:</h3>
+<h4>Here are all the stylists currently working here:</h4>
 
 <% if @stylists.any?() %>
   <p>Click on a stylist to assign them clients</p>
@@ -18,7 +18,7 @@
     <p>There are no stylists working here yet!</p>
   <% end %>
 
-<h3>Here are all the current clients at Curl Up and Dye:</h3>
+<h4>Here are all the current clients at Curl Up and Dye:</h4>
 
 <% if @clients.any?() %>
   <p>Click on a client to assign them to a stylist</p>

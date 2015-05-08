@@ -72,7 +72,7 @@ get('/stylists/:id') do
 end
 
 patch('/stylists/:id') do
-  name = params.fetch("name")
+  name = params.fetch("name", [])
   stylist_id = params.fetch("id").to_i()
   @stylist = Stylist.find(stylist_id)
   client_ids = params.fetch("client_ids", [])
@@ -80,6 +80,7 @@ patch('/stylists/:id') do
   @clients = Client.all()
   erb(:stylist_info)
 end
+
 
 delete('/stylists/:id') do
   stylist_id = params.fetch("id").to_i()
